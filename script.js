@@ -43,13 +43,13 @@ function displayWeather(event) {
                 iconImage.setAttribute("src",`http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`)
                 cityHeaderEl.innerHTML =  currentData.name + " "+ currentDate
                 cityHeaderEl.appendChild(iconImage)
-                TempEl.innerHTML =currentData.main.temp + " F"
+                TempEl.textContent =currentData.main.temp + " F"
                 console.log(TempEl.innerHTML)
-                windEl.innerHTML = currentData.wind.speed + " MPH"
+                windEl.textContent = currentData.wind.speed + " MPH"
                 console.log(windEl.innerHTML)
                 humidEl.textContent = currentData.main.humidity + "%"
                 console.log(humidEl.innerHTML)
-                uviEl.innerHTML = currentData.current.uvi
+                uviEl.textContent = currentData.current.uvi
                 console.log(uvEl.innerHTML)
                 
                 fetch(fiveDayUrl)
