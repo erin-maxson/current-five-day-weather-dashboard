@@ -10,20 +10,15 @@ To install this project, select the index.html file and open it in your default 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+Click inside the "Search for a City" box, type in a city and hit search. Once submitted, the current weather should appear in the top box and the 5 day weather should appear in the 5 smaller boxes under the current weather.
+    ![Weather Dashboard Screenshot](./Assets/weather-dashboard.png)
 
 ## Credits
-List your collaborators, if any, with links to their GitHub profiles.
+Myself and a few YouTube video tutorials.
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+5 Day Weather App: https://www.youtube.com/watch?v=QEu8_5bYm-w&list=LL&index=3&t=1211s
+Build a Weather App: https://www.youtube.com/watch?v=WZNG8UomjSI&list=LL&index=1&t=1780s
+Build a Weather App w/ Vanilla JavaScript: https://www.youtube.com/watch?v=wPElVpR1rwA&list=LL&index=2&t=750s
 
 ## License
 
