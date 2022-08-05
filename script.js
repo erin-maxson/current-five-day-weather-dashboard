@@ -6,7 +6,7 @@ var cityFormEl = document.querySelector("#city-form")
 var cityHeaderEl = document.querySelector("#city-header")
 var TempEl = document.querySelector("#temp")
 var windEl = document.querySelector("#wind")
-var humidityEl = document.querySelector("humidity")
+var humidityEl = document.querySelector("#humidity")
 var uviEl = document.querySelector("#uvi")
 var cityHeaderCard1El = document.querySelector("#city-header-card-1")
 
@@ -51,9 +51,7 @@ function displayWeather(event) {
                 windEl.textContent = currentData.wind.speed + " MPH"
                 console.log(windEl.innerHTML)
                 humidityEl.textContent = currentData.main.humidity + "%"
-                console.log(humidEl.innerHTML)
-                uviEl.textContent = currentData.current.uvi
-                console.log(uvEl.innerHTML)
+                console.log(humidityEl.innerHTML)
                 
                 fetch(fiveDayUrl)
                 .then(function (response) {
@@ -61,9 +59,11 @@ function displayWeather(event) {
                 })
 
                 .then(function (fiveDayData) {
+                    uviEl.textContent = fiveDayData.current.uvi
+                    console.log(uviEl.innerHTML)
+                
                 for (let index = 1; index < 6; index++) {
-                    fiveDayDates[(index-1)].textContent = moment.unix(fiveDayData.daily[index].dt).format("MM/DD/YYYY")
-                    dayIcons[(index-1)].setAttribute("src",`http://openweathermap.org/img/wn/${fiveDayData.daily[index].weather[0].icon}@2x.png`)
+                    fiveDayDates[(index-1)].textContent = cityEl.value + " " + moment.unix(fiveDayData.daily[index].dt).format("MM/DD/YYYY")
                     dayTemp[(index-1)].textContent = fiveDayData.daily[index].temp.max
                     dayWind[(index-1)].textContent = fiveDayData.daily[index].wind_speed
                     dayHumidity[(index-1)].textContent = fiveDayData.daily[index].humidity
