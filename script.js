@@ -17,18 +17,16 @@ var api = "43307f36c133c1b4d80feb3644b2ab3e"
 function displayWeather(event) {
     event.preventDefault()
     var cityName = cityEl.value
-    var urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api}&units=imperial`
+    var currentURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api}&units=imperial`
 
-
-    fetch(urlCurrent)
+    fetch(currentURL)
         .then(function (response) {
             return response.json()
         })
-        .then(function (currentData) {
 
+        .then(function (currentData) {
             console.log(currentData)
-            var fiveDayUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${currentData.coord.lat}&lon=${currentData.coord.lon}&appid=${api}&units=imperial
-            `
+
             fetch(fiveDayUrl)
             .then(function(response){
                 return response.json()
@@ -44,13 +42,26 @@ function displayWeather(event) {
                 console.log(TempEl.innerHTML)
                 windEl.innerHTML = currentData.wind.speed + " MPH"
                 console.log(windEl.innerHTML)
-                humidEl.textContent = currentData.main.humidity
+                humidEl.textContent = currentData.main.humidity + "%"
                 console.log(humidEl.innerHTML)
-                uviEl.innerHTML = fiveDayData.current.uvi
+                uviEl.innerHTML = currentData.current.uvi
                 console.log(uvEl.innerHTML)
-                 
+
+                var fiveDayUrl =`https://api.openweathermap.org/data/2.5/onecall?lat=${currentData.coord.lat}&lon=${currentData.coord.lon}&appid=${api}&units=imperial`
+                
+                fetch(fiveDayUrl)
+                .then(function (response) {
+                    return response.json()
+                })
+
+                .then(function (fiveDayData){
+
+                })
 
             })
+
+
+
         })
 
 }
