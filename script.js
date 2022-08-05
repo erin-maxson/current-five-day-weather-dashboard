@@ -64,9 +64,9 @@ function displayWeather(event) {
                 
                 for (let index = 1; index < 6; index++) {
                     fiveDayDates[(index-1)].textContent = cityEl.value + " " + moment.unix(fiveDayData.daily[index].dt).format("MM/DD/YYYY")
-                    dayTemp[(index-1)].textContent = fiveDayData.daily[index].temp.max
-                    dayWind[(index-1)].textContent = fiveDayData.daily[index].wind_speed
-                    dayHumidity[(index-1)].textContent = fiveDayData.daily[index].humidity
+                    dayTemp[(index-1)].textContent = fiveDayData.daily[index].temp.max + " F"
+                    dayWind[(index-1)].textContent = fiveDayData.daily[index].wind_speed + " MPH"
+                    dayHumidity[(index-1)].textContent = fiveDayData.daily[index].humidity + "%"
                 }
                 })
 
