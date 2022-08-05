@@ -6,7 +6,7 @@ var cityFormEl = document.querySelector("#city-form")
 var cityHeaderEl = document.querySelector("#city-header")
 var TempEl = document.querySelector("#temp")
 var windEl = document.querySelector("#wind")
-var humidEl = document.querySelector("humidity")
+var humidityEl = document.querySelector("humidity")
 var uviEl = document.querySelector("#uvi")
 var cityHeaderCard1El = document.querySelector("#city-header-card-1")
 
@@ -15,7 +15,6 @@ var fiveDayDates = [document.querySelector('#date-1'), document.querySelector('#
 var dayTemp = [document.querySelector('#temp-1'), document.querySelector('#temp-2'), document.querySelector('#temp-3'), document.querySelector('#temp-4'), document.querySelector('#temp-5')]
 var dayWind = [document.querySelector('#wind-1'), document.querySelector('#wind-2'), document.querySelector('#wind-3'), document.querySelector('#wind-4'), document.querySelector('#wind-5')]
 var dayHumidity = [document.querySelector('#humidity-1'), document.querySelector('#humidity-2'), document.querySelector('#humidity-3'), document.querySelector('#humidity-4'), document.querySelector('#humidity-5')]
-var dayUVI = [document.querySelector('uvi-1'), document.querySelector('#uvi-2'), document.querySelector('#uvi-3'), document.querySelector('#uvi-4'), document.querySelector('#uvi-5')]
 var dayIcons = [document.querySelector('#icon-1'), document.querySelector('#icon-2'), document.querySelector('#icon-3'), document.querySelector('#icon-4'), document.querySelector('#icon-5')]
 
 //open weather api key
@@ -51,7 +50,7 @@ function displayWeather(event) {
                 console.log(TempEl.innerHTML)
                 windEl.textContent = currentData.wind.speed + " MPH"
                 console.log(windEl.innerHTML)
-                humidEl.textContent = currentData.main.humidity + "%"
+                humidityEl.textContent = currentData.main.humidity + "%"
                 console.log(humidEl.innerHTML)
                 uviEl.textContent = currentData.current.uvi
                 console.log(uvEl.innerHTML)
@@ -62,7 +61,13 @@ function displayWeather(event) {
                 })
 
                 .then(function (fiveDayData) {
-                
+                for (let index = 1; index < 6; index++) {
+                    fiveDayDates[(index-1)].textContent = moment.unix(fiveDayData.daily[index].dt).format("MM/DD/YYYY")
+                    dayIcons[(index-1)].setAttribute("src",`http://openweathermap.org/img/wn/${fiveDayData.daily[index].weather[0].icon}@2x.png`)
+                    dayTemp[(index-1)].textContent = fiveDayData.daily[index].temp.max
+                    dayWind[(index-1)].textContent = fiveDayData.daily[index].wind_speed
+                    dayHumidity[(index-1)].textContent = fiveDayData.daily[index].humidity
+                }
                 })
 
             })
