@@ -11,8 +11,12 @@ var uviEl = document.querySelector("#uvi")
 var cityHeaderCard1El = document.querySelector("#city-header-card-1")
 
 //5 day weather cards
-
-
+var fiveDayDates = [document.querySelector('#date-1'), document.querySelector('#date-2'), document.querySelector('#date-3'), document.querySelector('#date-4'), document.querySelector('#date-5')]
+var dayTemp = [document.querySelector('#temp-1'), document.querySelector('#temp-2'), document.querySelector('#temp-3'), document.querySelector('#temp-4'), document.querySelector('#temp-5')]
+var dayWind = [document.querySelector('#wind-1'), document.querySelector('#wind-2'), document.querySelector('#wind-3'), document.querySelector('#wind-4'), document.querySelector('#wind-5')]
+var dayHumidity = [document.querySelector('#humidity-1'), document.querySelector('#humidity-2'), document.querySelector('#humidity-3'), document.querySelector('#humidity-4'), document.querySelector('#humidity-5')]
+var dayUVI = [document.querySelector('uvi-1'), document.querySelector('#uvi-2'), document.querySelector('#uvi-3'), document.querySelector('#uvi-4'), document.querySelector('#uvi-5')]
+var dayIcons = [document.querySelector('#icon-1'), document.querySelector('#icon-2'), document.querySelector('#icon-3'), document.querySelector('#icon-4'), document.querySelector('#icon-5')]
 
 //open weather api key
 var api = "43307f36c133c1b4d80feb3644b2ab3e"
@@ -57,8 +61,8 @@ function displayWeather(event) {
                     return response.json()
                 })
 
-                .then(function (fiveDayData){
-
+                .then(function (fiveDayData) {
+                
                 })
 
             })
